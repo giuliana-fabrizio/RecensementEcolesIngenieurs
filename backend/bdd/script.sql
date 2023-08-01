@@ -21,3 +21,6 @@ create table ecole (
     constraint pk_ecole primary key nom,
     constraint fk_ecole_region foreign key ecole_region references region (libelle_region)
 );
+
+/copy region(libelle_region) from "./data_region.csv" delimiter as ',';
+select * from region;
