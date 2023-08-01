@@ -1,10 +1,10 @@
 const Pool = require("pg").Pool;
 
-const user = 'ggodailf';
-const host = 'localhost';
-const password = '2711';
-const database = 'ecoles_ingenieurs';
-const port = 5432;
+const user = process.env.USER;
+const host = process.env.HOST;
+const password = process.env.PASSWORD;
+const database = process.env.DATABASE;
+const port = process.env.PORT_BDD;
 
 const pool = new Pool({
     user: user,
