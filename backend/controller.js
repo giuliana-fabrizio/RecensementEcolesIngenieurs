@@ -89,5 +89,10 @@ const updateSchool = (req, res) => {
 };
 
 const deleteSchool = (req, res) => {
-
+    try {
+        const deletedSchool = await services.deletedSchool(req.params.nom);
+        res.status(200).send(deletedSchool);
+    } catch (e) {
+        res.status(500).send(e.message);
+    }
 }; 
