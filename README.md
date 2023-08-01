@@ -1,6 +1,6 @@
 # RecensementEcolesIngenieurs
 
-L'objectif de ce projet est de simplifier le recensement de toutes les écoles d'ingénieurs de France dans le but d'y postuler. Outre les fonctionnalités classique d'ajout, de modification, ou de suppression il offre également la possibilité de filtrer les ecoles en fonction de différents paramètres.
+L'objectif de ce projet est de simplifier le recensement de toutes les écoles d'ingénieurs de France dans le but d'y postuler. Outre les fonctionnalités classiques d'ajout, de modification, ou de suppression, il offre également la possibilité de filtrer les écoles en fonction de différents paramètres.
 
 // TODO structure du projet
 
