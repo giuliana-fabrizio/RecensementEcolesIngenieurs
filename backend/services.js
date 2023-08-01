@@ -3,8 +3,8 @@ const pool = require("./bdd/db.js");
 
 const getAllSchools = async() => {
     await pool.query(requests.getAllSchools, (error, results) =>{
-        if (error) throw error;
-        return results;
+        if (error) return callback(error);
+        return callback(null, results);
     });
 };
 
@@ -38,23 +38,23 @@ const filterAllSchools = async(
             allSchools = allSchools.filter(school => school.alternance === alternance);
         }
 
-        return allSchools;
+        return (null, allSchools);
     } catch (e) {
-        throw e;
+        return callback(e);
     }
 };
 
 const getOneSchool = async(nom) => {
-    await pool.query(requests.getOneSchool, [nom], (error, results) =>{
-        if (error) throw error;
-        return results;
+    await pool.query(requests.getOneSchool, [nom], (error, result) =>{
+        if (error) return callback(error);
+        return callback(null, result);
     });
 };
 
 const getAllRegions = async() => {
     await pool.query(requests.getAllRegions, (error, results) =>{
-        if (error) throw error;
-        return results;
+        if (error) return callback(error);
+        return callback(null, results);
     });
 };
 
@@ -84,9 +84,9 @@ const addSchool = async(
         spes_proposees,
         ecole_region
     ], (error, result) => {
-        if (error) throw error;
-        console.log(result);
-        return result; // TODO return ajout reussi
+        if (error) return callback(error);
+        console.log(result)
+        return callback(null, result); // TODO return ajout reussi
     });
 };
 
@@ -118,15 +118,14 @@ const updateSchool = async(
         ecole_region,
         ancien_nom
     ], (error, result) => {
-        if (error) throw error;
-        console.log(result);
-        return result; // TODO return modification reussie
+        if (error) return callback(error);
+        return callback(null, result); // TODO return modification reussie
     });
 };
 
 const deleteSchool = async(nom) => {
     await pool.query(requests.deleteSchool, [nom], (error, result) => {
-        if (error) throw error;
-        return result; // TODO return suppression reussie
+        if (error) return callback(error);
+        return callback(null, result); // TODO return suppression reussie
     });
 };
