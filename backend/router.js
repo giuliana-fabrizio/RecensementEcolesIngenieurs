@@ -17,3 +17,5 @@ router.post("addSchool", controller.addSchool);
 router.put("updateSchool", controller.updateSchool);
 
 router.delete("deleteSchool", controller.deleteSchool);
+
+module.exports(router);
