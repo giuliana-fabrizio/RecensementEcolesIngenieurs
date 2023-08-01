@@ -38,7 +38,7 @@ const filterAllSchools = async(
             allSchools = allSchools.filter(school => school.alternance === alternance);
         }
 
-        return (null, allSchools);
+        return callback(null, allSchools);
     } catch (e) {
         return callback(e);
     }
