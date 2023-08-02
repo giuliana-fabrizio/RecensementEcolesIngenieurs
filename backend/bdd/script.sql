@@ -3,7 +3,7 @@ drop table if exists region;
 
 create table region (
     libelle_region varchar(100),
-    constraint pk_region primary key libelle_region
+    constraint pk_region primary key (libelle_region)
 );
 
 create table ecole (
@@ -18,8 +18,8 @@ create table ecole (
     modalites_admission         varchar(10),
     spes_proposees              varchar(100000),
     ecole_region                varchar(100),
-    constraint pk_ecole primary key nom,
-    constraint fk_ecole_region foreign key ecole_region references region (libelle_region)
+    constraint pk_ecole primary key (nom),
+    constraint fk_ecole_region foreign key (ecole_region) references region (libelle_region)
 );
 
 /copy region(libelle_region) from "./data_region.csv" delimiter as ',';

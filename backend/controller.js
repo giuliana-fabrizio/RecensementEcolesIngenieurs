@@ -76,7 +76,17 @@ const updateSchool = async(req, res) => {
 
 const deleteSchool = async(req, res) => {
     await services.deletedSchool(req.params.nom, (error, result) => {
-        if (error) returnˆres.status(500).send(error.message);
+        if (error) return res.status(500).send(error.message);
         return res.status(200).send(result);
     });
-}; 
+};
+
+module.exports = {
+    getAllSchools,
+    filterAllSchools,
+    getOneSchool,
+    getAllRegions,
+    addSchool,
+    updateSchool,
+    deleteSchool
+};

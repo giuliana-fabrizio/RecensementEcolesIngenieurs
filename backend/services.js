@@ -1,7 +1,7 @@
 const requests = require("./bdd/requests.js");
 const pool = require("./bdd/db.js");
 
-const getAllSchools = async() => {
+const getAllSchools = async(callback) => {
     await pool.query(requests.getAllSchools, (error, results) =>{
         if (error) return callback(error);
         return callback(null, results);
@@ -14,7 +14,8 @@ const filterAllSchools = async(
     modalites_inscription,
     classement,
     annee_admission,
-    alternance
+    alternance,
+    callback
 ) => {
     try {
         var allSchools = await getAllSchools;
@@ -44,14 +45,14 @@ const filterAllSchools = async(
     }
 };
 
-const getOneSchool = async(nom) => {
+const getOneSchool = async(nom, callback) => {
     await pool.query(requests.getOneSchool, [nom], (error, result) =>{
         if (error) return callback(error);
         return callback(null, result);
     });
 };
 
-const getAllRegions = async() => {
+const getAllRegions = async(callback) => {
     await pool.query(requests.getAllRegions, (error, results) =>{
         if (error) return callback(error);
         return callback(null, results);
@@ -69,7 +70,8 @@ const addSchool = async(
     modalites_concours_ecrit,
     modalites_admission,
     spes_proposees,
-    ecole_region
+    ecole_region,
+    callback
 ) => {
     await pool.query(requests.addSchool, [
         nom,
@@ -102,7 +104,8 @@ const updateSchool = async(
     modalites_admission,
     spes_proposees,
     ecole_region,
-    ancien_nom
+    ancien_nom,
+    callback
 ) => {
     await pool.query(requests.updateSchool, [
         nom,
@@ -123,9 +126,19 @@ const updateSchool = async(
     });
 };
 
-const deleteSchool = async(nom) => {
+const deleteSchool = async(nom, callback) => {
     await pool.query(requests.deleteSchool, [nom], (error, result) => {
         if (error) return callback(error);
         return callback(null, result); // TODO return suppression reussie
     });
+};
+
+module.exports = {
+    getAllSchools,
+    filterAllSchools,
+    getOneSchool,
+    getAllRegions,
+    addSchool,
+    updateSchool,
+    deleteSchool
 };
