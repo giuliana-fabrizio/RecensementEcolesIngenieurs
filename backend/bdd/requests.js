@@ -51,3 +51,12 @@ const updateSchool = "\
 const deleteSchool = "\
     delete from ecole where nom = $1;\
 ";
+
+module.exports = {
+    getAllSchools,
+    getOneSchool,
+    getAllRegions,
+    addSchool,
+    updateSchool,
+    deleteSchool
+};

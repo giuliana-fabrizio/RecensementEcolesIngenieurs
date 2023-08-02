@@ -1,14 +1,14 @@
 const requests = require("./bdd/requests.js");
 const pool = require("./bdd/db.js");
 
-const getAllSchools = async(callback) => {
+exports.getAllSchools = async(callback) => {
     await pool.query(requests.getAllSchools, (error, results) =>{
         if (error) return callback(error);
         return callback(null, results);
     });
 };
 
-const filterAllSchools = async(
+exports.filterAllSchools = async(
     nom,
     region,
     modalites_inscription,
@@ -45,21 +45,21 @@ const filterAllSchools = async(
     }
 };
 
-const getOneSchool = async(nom, callback) => {
+exports.getOneSchool = async(nom, callback) => {
     await pool.query(requests.getOneSchool, [nom], (error, result) =>{
         if (error) return callback(error);
         return callback(null, result);
     });
 };
 
-const getAllRegions = async(callback) => {
+exports.getAllRegions = async(callback) => {
     await pool.query(requests.getAllRegions, (error, results) =>{
         if (error) return callback(error);
         return callback(null, results);
     });
 };
 
-const addSchool = async(
+exports.addSchool = async(
     nom,
     adresse,
     alternance,
@@ -92,7 +92,7 @@ const addSchool = async(
     });
 };
 
-const updateSchool = async(
+exports.updateSchool = async(
     nom,
     adresse,
     alternance,
@@ -126,19 +126,9 @@ const updateSchool = async(
     });
 };
 
-const deleteSchool = async(nom, callback) => {
+exports.deleteSchool = async(nom, callback) => {
     await pool.query(requests.deleteSchool, [nom], (error, result) => {
         if (error) return callback(error);
         return callback(null, result); // TODO return suppression reussie
     });
-};
-
-module.exports = {
-    getAllSchools,
-    filterAllSchools,
-    getOneSchool,
-    getAllRegions,
-    addSchool,
-    updateSchool,
-    deleteSchool
 };
