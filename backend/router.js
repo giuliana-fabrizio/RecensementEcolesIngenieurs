@@ -4,18 +4,18 @@ const express = require("express");
 const router = express.Router();
 
 
-router.get("/getAllSchools", controller.getAllSchools);
+router.route("/getAllSchools").get(controller.getAllSchools);
 
-router.get("/filterAllSchool", controller.filterAllSchools);
+router.route("/filterAllSchool").get(controller.filterAllSchools);
 
-router.get("/getOneSchool", controller.getOneSchools);
+router.route("/getOneSchool/:nom").get(controller.getOneSchool);
 
-router.get("/getAllRegions", controller.getAllRegions);
+router.route("/getAllRegions").get(controller.getAllRegions);
 
-router.post("/addSchool", controller.addSchool);
+router.route("/addSchool").post(controller.addSchool);
 
-router.put("/updateSchool", controller.updateSchool);
+router.route("/updateSchool").put(controller.updateSchool);
 
-router.delete("/deleteSchool", controller.deleteSchool);
+router.route("/deleteSchool/:nom").delete(controller.deleteSchool);
 
 module.exports = router;
